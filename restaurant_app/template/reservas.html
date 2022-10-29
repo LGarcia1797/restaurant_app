@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>LISTA RESERVAS</title>
+</head>
+<body class="container mt-5">
+    <div class="alert alert-info display-1 text-center">RESERVAS</div>
+    {% if reservas %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Nombre</th>
+                <th>Numero de personas</th>
+                <th>Telefono</th>
+                <th>Dia Reserva</th>
+                <th>estado</th>
+                <th>Observacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reservas.nombre}}</td>
+                <td>{{ reservas.Npersonas}}</td>
+                <td>{{ reservas.telefono}}</td>
+                <td>{{ reservas.diareserva}}</td>
+                <td>{{ reservas.estado}}</td>
+                <td>{{ reservas.observacion}}</td>
+                <td><a href="/actaulizar_reserva/{{reserva.id}}" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></td>
+                <td><a href="/quitar_reserva/{{reserva.id}}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encuentran reservas en el sistema</strong>
+    </div>
+    {% endif %}
+
+    <a href="../" class="btn btn-danger">VOLVER</a>
+    <a href="../agr_reserva/" class="btn btn-info float-end">AGREGAR RESERVA</a>
+    
+</body>
+</html>
